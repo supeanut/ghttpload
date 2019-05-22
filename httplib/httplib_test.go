@@ -122,6 +122,7 @@ func TestWithSetting(t *testing.T) {
 		MaxIdleConns: 50,
 		IdleConnTimeout: 90 * time.Second,
 		ExpectContinueTimeout: 1 * time.Second,
+		DisableKeepAlives: true,
 	}
 	setting.ReadWriteTimeout = 5 * time.Second
 	SetDefaultSetting(setting)

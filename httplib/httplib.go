@@ -425,7 +425,10 @@ func (r *HttpRequest) DoRequest() (resp *http.Response, err error) {
 			TLSClientConfig:     r.setting.TLSClientConfig,
 			Proxy: 			     r.setting.Proxy,
 			Dial:			     TimeoutDialer(r.setting.ConnectTimeout, r.setting.ReadWriteTimeout),
-			MaxIdleConnsPerHost: 100,
+			// set connect poll size 1
+			MaxIdleConnsPerHost: 1,
+			// close http-keep-alive to make short connect
+			DisableKeepAlives: true,
 		}
 	} else {
 		// if b.transport is *http.Transport then set the settings.
