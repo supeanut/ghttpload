@@ -38,3 +38,14 @@ func GetContentSize(url string) (int64, error) {
 	}
 	return size, nil
 }
+
+func GetFile(url string, headers map[string]string) (*http.Response, error) {
+	req := httplib.Get(url)
+	req.SetRetrys(3)
+	if headers != nil {
+		for k,v := range headers {
+			req.Header(k,v)
+		}
+	}
+	return req.Response()
+}

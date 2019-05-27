@@ -11,6 +11,10 @@ import "github.com/supeanut/ghttpload/porter"
 
 var defaultPorter = porter.NewPorter()
 
+func NewPorter() *porter.Porter {
+	return porter.NewPorter()
+}
+
 // set porter path
 func SetPath(path string) {
 	defaultPorter.SetPath(path)
@@ -24,4 +28,14 @@ func SetFilename(filename string) {
 // set porter url
 func SetUrl(url string) {
 	defaultPorter.SetUrl(url)
+}
+
+// ser porter retries
+func SetRetries(n int) {
+	defaultPorter.SetRetries(n)
+}
+
+// download
+func Download() {
+	defaultPorter.Download()
 }

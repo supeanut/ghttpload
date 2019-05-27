@@ -136,6 +136,11 @@ func (r *HttpRequest) Setting(setting HttpSettings) *HttpRequest {
 	return r
 }
 
+// Setting Retrys for request settings
+func (r *HttpRequest) SetRetrys(n int) {
+	r.setting.Retries = n
+}
+
 // SetBasicAuth sets the reqeust's Authorization header to use HTTP Basic Authentication with the provided username and password.
 func (r *HttpRequest) SetBasicAuth(username, password string) *HttpRequest {
 	r.req.SetBasicAuth(username, password)
